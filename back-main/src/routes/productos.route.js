@@ -13,4 +13,6 @@ router.delete("/:id", condoCtrl.deleteCondon);
 
 router.put("/:id", condoCtrl.updateCondon);
 
+router.put("/restar/:id", condoCtrl.restCondon)
+
 module.exports = router;

@@ -13,7 +13,7 @@ const URI = "mongodb+srv://MiguelManzanilla:Yahirtontin18@cluster0.dqyo5fr.mongo
 //Respuesta del localhost en el navegador
 app.get('/', (req, res) => {
     res.send("Hola Maeta 😬")
-}) 
+})   
 
 //Midlewares
 

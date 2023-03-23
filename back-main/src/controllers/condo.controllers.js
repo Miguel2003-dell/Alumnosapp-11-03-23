@@ -4,7 +4,7 @@ const salytRounds = 10
 var jwt = require('jsonwebtoken')
 
 //Consulta para añadir datos
-const saveCondon = async (req, res) => { 
+const saveCondon = async (req, res) => {
     const newCondon = new Condon({
         _id: req.body._id,
         marca: req.body.marca,
@@ -33,14 +33,23 @@ const deleteCondon = async (req, res) => {
 const updateCondon = async (req, res) => {
     const updatedCondon = await Condon.findByIdAndUpdate(req.params.id, req.body);
     res.json({
-      mensaje: "El dato se ha actualizo :D",
+        mensaje: "El dato se ha actualizo :D",
     });
-  };
+};
+
+const restCondon = async (req, res) => {
+    const restCondon = await Condon.findByIdAndUpdate(req.params.id, req.body);
+    res.json({
+        mensaje: "El dato se ha actualizo :D",
+    });
+
+};
 
 //Exportacion de las consultas a models
 module.exports = {
     saveCondon,
     findAllCondon,
     deleteCondon,
-    updateCondon
+    updateCondon,
+    restCondon
 }

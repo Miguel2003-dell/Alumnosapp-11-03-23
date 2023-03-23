@@ -9,8 +9,9 @@ import Login from "./src/screens/Login";
 import Register from "./src/screens/Register";
 
 import Home from "./src/screens/Auth/HomeScreen";
-import UserDataScreen from "./src/screens/Auth/UserDataScreen";
 import Insertar from "./src/screens/Auth/Insertar";
+import Editar from "./src/screens/Auth/Editar";
+import Eliminar from "./src/screens/Auth/Eliminar";
 // import Temp from "./src/screens/auth/Temp";
 // import Humedad from "./src/screens/auth/Humedad";
 
@@ -67,11 +68,22 @@ const MenuTab = () => {
           }}
         />
       <Tab.Screen
-        name="UserScreen"
-        component={UserDataScreen}
+        name="Ediatr"
+        component={Editar}
         options={{
           headerShown: false,
-          tabBarLabel: "Perfil",
+          tabBarLabel: "Editar",
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name="account" size={size} color={color} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Eliminar"
+        component={Eliminar}
+        options={{
+          headerShown: false,
+          tabBarLabel: "Eliminar",
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="account" size={size} color={color} />
           ),
