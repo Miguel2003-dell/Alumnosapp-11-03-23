@@ -11,7 +11,7 @@ import Register from "./src/screens/Register";
 import Home from "./src/screens/Auth/HomeScreen";
 import Insertar from "./src/screens/Auth/Insertar";
 import Editar from "./src/screens/Auth/Editar";
-import Eliminar from "./src/screens/Auth/Eliminar";
+// import Eliminar from "./src/screens/Auth/Eliminar";
 // import Temp from "./src/screens/auth/Temp";
 // import Humedad from "./src/screens/auth/Humedad";
 
@@ -78,7 +78,7 @@ const MenuTab = () => {
           ),
         }}
       />
-      <Tab.Screen
+      {/* <Tab.Screen
         name="Eliminar"
         component={Eliminar}
         options={{
@@ -88,7 +88,7 @@ const MenuTab = () => {
             <MaterialCommunityIcons name="account" size={size} color={color} />
           ),
         }}
-      />
+      /> */}
     </Tab.Navigator>
   );
 };

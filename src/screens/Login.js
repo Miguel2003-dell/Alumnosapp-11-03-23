@@ -46,7 +46,7 @@ const Login = () => {
       /> */}
       <Text style={GeneralStyles.subTitle}> Iniciar sesion </Text>
       <TextInput
-        placeholder="Correo electronico"
+        placeholder="Usuario"
         style={GeneralStyles.Input}
         value={user.User}
         onChangeText={(text) => handleChange("User", text)}
@@ -65,7 +65,7 @@ const Login = () => {
           Iniciar{" "}
         </Text>
       </TouchableOpacity>
-      <TouchableOpacity
+      {/* <TouchableOpacity
         style={GeneralStyles.boton}
         onPress={() => navigation.navigate("register")}
       >
@@ -73,7 +73,7 @@ const Login = () => {
           {" "}
           Registrarme{" "}
         </Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
       <StatusBar style="auto" />
     </View>
   );

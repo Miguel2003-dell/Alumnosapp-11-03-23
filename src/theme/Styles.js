@@ -6,6 +6,7 @@ export const GeneralStyles = StyleSheet.create({
     backgroundColor: "#f1f1f1",
     alignItems: "center",
     justifyContent: "center",
+    marginTop: +20,
   },
   container1: {
     flex: 1,
