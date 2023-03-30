@@ -1,20 +1,21 @@
+//Imprts que darán funcionabilidad a las pantallas principales.
 import React, { useEffect, useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
+//Import de los Icons
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
+//Import del Login de acceso
 import Login from "./src/screens/Login";
-import Register from "./src/screens/Register";
 
+//Imports de las pantallas que se usaron.
 import Home from "./src/screens/Auth/HomeScreen";
 import Insertar from "./src/screens/Auth/Insertar";
 import Editar from "./src/screens/Auth/Editar";
-// import Eliminar from "./src/screens/Auth/Eliminar";
-// import Temp from "./src/screens/auth/Temp";
-// import Humedad from "./src/screens/auth/Humedad";
 
+//Contenedor de las pantallas.
 import AuthContextProvider from "./src/context/AuthContext";
 
 //Funciones para crear la distribucion de pantallas
@@ -30,7 +31,17 @@ const LoginStack = () => {
         component={Login}
         options={{ headerShown: false }}
       />
-      <Stack.Screen name="register" component={Register} />
+      <Stack.Screen
+        name="Editar"
+        component={Editar}
+        options={{
+          headerShown: true,
+          tabBarLabel: "Editar",
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name="account" size={size} color={color} />
+          ),
+        }}
+      />
     </Stack.Navigator>
   );
 };
@@ -56,39 +67,17 @@ const MenuTab = () => {
           //tabBarBadge: 1 Notificaciones
         }}
       />
-        <Tab.Screen
-          name="Insertar"
-          component={Insertar}
-          options={{
-            headerShown: false,
-            tabBarLabel: "Insertar",
-            tabBarIcon: ({ color, size }) => (
-              <MaterialCommunityIcons name="account" size={size} color={color} />
-            ),
-          }}
-        />
       <Tab.Screen
-        name="Ediatr"
-        component={Editar}
+        name="Insertar"
+        component={Insertar}
         options={{
           headerShown: false,
-          tabBarLabel: "Editar",
+          tabBarLabel: "Insertar",
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="account" size={size} color={color} />
           ),
         }}
       />
-      {/* <Tab.Screen
-        name="Eliminar"
-        component={Eliminar}
-        options={{
-          headerShown: false,
-          tabBarLabel: "Eliminar",
-          tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="account" size={size} color={color} />
-          ),
-        }}
-      /> */}
     </Tab.Navigator>
   );
 };
@@ -98,20 +87,20 @@ const app = () => {
   //Funcion para verificar si hay un usuario loggeado
   return (
     <AuthContextProvider>
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          name="LoginStack"
-          component={LoginStack}
-          options={{ headerShown: false, headerLeft: null }}
-        />
-        <Stack.Screen
-          name="Menu"
-          component={MenuTab}
-          options={{ headerShown: false }}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen
+            name="LoginStack"
+            component={LoginStack}
+            options={{ headerShown: false, headerLeft: null }}
+          />
+          <Stack.Screen
+            name="Menu"
+            component={MenuTab}
+            options={{ headerShown: false }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
     </AuthContextProvider>
   );
 };

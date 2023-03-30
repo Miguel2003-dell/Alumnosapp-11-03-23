@@ -1,27 +1,35 @@
+//Imprts que daran muncionalidad y permitiran navegar entre pantallas.
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
 import React, { useState } from 'react'
 import { useNavigation } from "@react-navigation/native";
 
+//Import de estilos usados en esta pantalla.
 import { GeneralStyles } from "../../theme/Styles";
 import { TextInput } from 'react-native-gesture-handler';
 
+//Import del api usada en esta pantalla.
 import { saveData } from '../../api/api';
 
-const Insertar = ({navigation, route}) => {
+const Insertar = () => {
+  //Inicializando los datos recibidos como vacios.
   const [data, setData] = useState({
     marca: '',
     cantidad: '',
   });
 
-  // console.log(route.params)
- 
+  //Constante que perimitira la navegación entre pantallas.
+  const nav = useNavigation()
+
+  //Aqui se cargan y actualizan los datos que se reciban.
   const handleChange = (name, value) => setData({ ...data, [name]: value });
 
+  //Aqui despues de actualizar va a mandar a la pantalla principal.
   const handleSubmit = () => {
     saveData(data);
-    navigation.navigate('HomeScreen')
+    nav.navigate("Home")
   };
 
+  //Uso de datos recibidos en los TextInput.
   return (
     <View style={GeneralStyles.container}>
       <Text style={styles.text}>Marca:</Text>
@@ -38,7 +46,7 @@ const Insertar = ({navigation, route}) => {
         placeholderTextColor="#546574"
         onChangeText={(text) => handleChange('cantidad', text)}
       />
-
+      {/* Boton que hara la funcion de actualizar y regresar al menú */}
       <TouchableOpacity style={styles.buttonSave} onPress={handleSubmit}>
         <Text style={styles.buttonText}>Guardar</Text>
       </TouchableOpacity>
@@ -46,6 +54,7 @@ const Insertar = ({navigation, route}) => {
   );
 };
 
+//Estilos creados para esta pantalla.
 const styles = StyleSheet.create({
   input: {
     width: '90%',
@@ -53,10 +62,10 @@ const styles = StyleSheet.create({
     marginBottom: 7,
     borderWidth: 1,
     borderColor: '10ac84',
-    height: 37,
+    height: 39,
     padding: 4,
     textAlign: 'center',
-    borderRadius: 5
+    borderRadius: 20
   },
   buttonSave: {
     padding: 10,
@@ -76,7 +85,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   textc: {
-    marginLeft: -252,
+    marginLeft: -250,
     marginBottom: 5,
     fontSize: 20,
   }

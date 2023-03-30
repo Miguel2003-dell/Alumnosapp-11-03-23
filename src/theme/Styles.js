@@ -23,6 +23,11 @@ export const GeneralStyles = StyleSheet.create({
     fontSize: 20,
     color: "gray",
   },
+  subTitleI: {
+    fontSize: 20,
+    color: "black",
+    marginBottom: 30,
+  },
   Input: {
     backgroundColor: "#fff",
     padding: 10,
@@ -32,13 +37,15 @@ export const GeneralStyles = StyleSheet.create({
     height: 50,
   },
   boton: {
-    marginTop: 30,
-    backgroundColor: "#4853a4",
-    borderRadius: 20,
     height: 50,
     width: 150,
     alignItems: "center",
-    marginBottom: 5,
+    borderRadius: 20,
+    marginTop: 15,
+    marginBottom: 10,
+    backgroundColor: '#000000',
+    width: '40%',
+    color: '#ffffff',
   },
   image: {
     flex: 1,
@@ -61,13 +68,13 @@ export const TempStyles = StyleSheet.create({
     color: "#fff",
     marginTop: 20,
   },
-  TempSlider :{
+  TempSlider: {
     width: "80%", marginTop: -20,
     marginTop: 7
   },
   TempSubTitle: {
     marginTop: 70,
     fontSize: 25,
-    color: "#000",
-  },
+    color: "#000",
+  },
 })

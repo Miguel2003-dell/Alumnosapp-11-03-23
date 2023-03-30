@@ -15,6 +15,14 @@ const saveCondon = async (req, res) => {
     res.json(newCondon);
 };
 
+//Funcion para obtener uno en especifico
+const findOne = async (req, res) => {
+    const Onecondon = await Condon.findById(req.params.id)
+    res.send({
+        condon: Onecondon
+    })
+}
+
 //Consulta para buscar todos los datos de la BD
 const findAllCondon = async (req, res) => {
     const oldCondon = await Condon.find();
@@ -37,6 +45,7 @@ const updateCondon = async (req, res) => {
     });
 };
 
+//Funcion que elimina un dato de la BD a travez de la maquina dispensadora.
 const restCondon = async (req, res) => {
     const restCondon = await Condon.findByIdAndUpdate(req.params.id, req.body);
     res.json({
@@ -51,5 +60,6 @@ module.exports = {
     findAllCondon,
     deleteCondon,
     updateCondon,
-    restCondon
+    restCondon,
+    findOne
 }

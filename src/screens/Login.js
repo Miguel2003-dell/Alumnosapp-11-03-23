@@ -7,7 +7,8 @@ import {
   View,
   TextInput,
   TouchableOpacity,
-  Image
+  Image,
+  Alert
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
@@ -33,24 +34,38 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     // console.log(user);
-    await login(user);
-    navigation.navigate("Menu");
+    // await login(user);
+    // navigation.navigate("Menu");
+    if (await login(user)) {
+      navigation.navigate("Menu");
+    } else {
+      Alert.alert("Usuario y/o contraseña incorrectos",
+        "Por favor vuelva a intentar", [
+        {
+          text: "Ok",
+          onPress: () => navigation.navigate("LoginStack")
+        }
+      ])
+    }
   };
 
   return (
     <View style={GeneralStyles.container}>
       {/* <Text style={styles.title}> UTD </Text> */}
-      {/* <Image
-        source={require("../images/Reigen.png")}
-        style={{ width: 200, height: 200, marginBottom: 15 }}
-      /> */}
-      <Text style={GeneralStyles.subTitle}> Iniciar sesion </Text>
+      <Image
+        source={require("../images/logo.png")}
+        style={{ width: 180, height: 180, marginBottom: 15, borderRadius: 40, }}
+      />
+      <Text style={GeneralStyles.subTitleI}> Iniciar sesion </Text>
+
+      <Text style={styles.text}>Ingrese su Usuario:</Text>
       <TextInput
         placeholder="Usuario"
         style={GeneralStyles.Input}
         value={user.User}
         onChangeText={(text) => handleChange("User", text)}
       />
+      <Text style={styles.textc}>Ingrese su Contraseña:</Text>
       <TextInput
         placeholder="Contraseña"
         style={GeneralStyles.Input}
@@ -58,25 +73,40 @@ const Login = () => {
         onChangeText={(text) => handleChange("password", text)}
         secureTextEntry={true}
       />
-
+      {/* Define un componente TouchableOpacity que se utiliza para mostrar un botón de inicio de sesión. Cuando se presiona el botón, se llama a la función handleSubmit. */}
       <TouchableOpacity style={GeneralStyles.boton} onPress={handleSubmit}>
-        <Text style={{ fontSize: 20, marginTop: 11, color: "#fff" }}>
-          {" "}
-          Iniciar{" "}
+        <Text style={{ fontSize: 20, marginTop: 11, color: "#ffffff" }}>
+          Iniciar Sesión
         </Text>
       </TouchableOpacity>
-      {/* <TouchableOpacity
-        style={GeneralStyles.boton}
-        onPress={() => navigation.navigate("register")}
-      >
-        <Text style={{ fontSize: 20, marginTop: 11, color: "#fff" }}>
-          {" "}
-          Registrarme{" "}
-        </Text>
-      </TouchableOpacity> */}
       <StatusBar style="auto" />
     </View>
   );
-};
 
-export default Login;
+};
+//Define un objeto de estilo que se utiliza para personalizar los estilos de los componentes en el componente Login.
+const styles = StyleSheet.create({
+  text: {
+    marginLeft: -130,
+    marginBottom: -10,
+    fontSize: 19,
+    color: 'grey',
+  },
+  textc: {
+    marginTop: 8,
+    marginLeft: -100,
+    marginBottom: -10,
+    fontSize: 19,
+    color: 'grey',
+  },
+  buttonSave: {
+    padding: 10,
+    borderRadius: 20,
+    marginTop: 10,
+    marginBottom: 10,
+    backgroundColor: '#000000',
+    width: '40%'
+  },
+});
+
+export default Login;

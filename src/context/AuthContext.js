@@ -1,3 +1,4 @@
+//Imports usados para el funcionamiento de la app
 import React, { createContext, useState } from "react";
 
 export const AuthContext = createContext();
@@ -12,7 +13,7 @@ const AuthContextProvider = ({ children }) => {
   };
   const [user, setUser] = useState(initialState);
   //Funcion para realizar la peticion a la base de datos y autenticar al usuario
-  const IP = "192.168.1.74";
+  const IP = "172.20.31.121";
   const login = async (user) => {
     // console.log(user);
     try {
@@ -29,12 +30,15 @@ const AuthContextProvider = ({ children }) => {
         // console.log(response);
         const AuthUser = await response.json();
         setUser(AuthUser);
+        return true
       } else {
         setUser(initialState);
+        return false
       }
     } catch (error) {
       console.log(error);
       setUser(initialState);
+      return false
     }
   };
   //Funcion para cerrar sesion y regresar al usuario a la pantalla de login

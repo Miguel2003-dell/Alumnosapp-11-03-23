@@ -7,6 +7,8 @@ const condoCtrl = require("../controllers/condo.controllers");
 //Se mandan a llamar a los controladores
 router.post("/", condoCtrl.saveCondon);
 
+router.get("/:id", condoCtrl.findOne)
+
 router.get("/", condoCtrl.findAllCondon);
 
 router.delete("/:id", condoCtrl.deleteCondon);
