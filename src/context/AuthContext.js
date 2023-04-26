@@ -13,7 +13,7 @@ const AuthContextProvider = ({ children }) => {
   };
   const [user, setUser] = useState(initialState);
   //Funcion para realizar la peticion a la base de datos y autenticar al usuario
-  const IP = "172.20.31.121";
+  const IP = "192.168.1.254";
   const login = async (user) => {
     // console.log(user);
     try {

@@ -1,4 +1,4 @@
-const IP = "172.20.31.121"
+const IP = "192.168.1.254"
 
 //Api que nos dará todos los productos.
 export const getData = async () => {
